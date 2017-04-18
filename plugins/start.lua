@@ -224,7 +224,7 @@ end
 	end
 if db:get("reg:"..msg.chat.id) == 'waiting' then
 local hash = "reg:"..msg.chat.id
-	local pass = Salam
+	local pass = 'Salam'
           db:set(hash,pass)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
 end
