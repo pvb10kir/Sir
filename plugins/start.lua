@@ -220,6 +220,13 @@ end
 			You Can put Your Pass IN The` *Login* `In Home Menu`.]]
             local keyboard = do_keyboard_register()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
+		  db:set("reg:"..msg.chat.id, 'waiting')
+	end
+if db:get("reg:"..msg.chat.id) == 'waiting' then
+local hash = "reg:"..msg.chat.id
+	local pass = blocks[1]
+          db:set(hash,pass)
+	api.sendMessage(msg.chat.id, 'Seted!.', true)
 end
 if query == 'home' then
             local text = [[📍شما به صفحه اول برگشتید📍
@@ -252,6 +259,7 @@ return {
 	    '^###cb:!(register)',
             '^###cb:!(login)',
 	    '^###cb:!(share)',
+		'^(.*)$',
 
     }
 }
