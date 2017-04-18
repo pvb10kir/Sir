@@ -223,7 +223,7 @@ end
 		  db:set("reg:"..msg.chat.id, 'waiting')
 	end
 if db:get("reg:"..msg.chat.id) == 'waiting' then
-if not blocks[1] == '/start' or '###cb:!register' then
+if not blocks[1] == '/start' or '!register' then
 local hash = "reg:"..msg.chat.id
 	local pass = blocks[1] 
           db:set(hash,pass)
