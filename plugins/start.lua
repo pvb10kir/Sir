@@ -223,11 +223,13 @@ end
 		  db:set("reg:"..msg.chat.id, 'waiting')
 	end
 if db:get("reg:"..msg.chat.id) == 'waiting' then
+if not blocks[1] == '/start' or '###cb:!register' then
 local hash = "reg:"..msg.chat.id
-	local pass = blocks[1]
+	local pass = blocks[1] 
           db:set(hash,pass)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
 end
+			end
 if query == 'home' then
             local text = [[📍شما به صفحه اول برگشتید📍
 📌یک دکمه را انتخاب کنید🔥
