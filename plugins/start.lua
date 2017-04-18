@@ -260,7 +260,7 @@ return {
 	    '^###cb:!(register)',
             '^###cb:!(login)',
 	    '^###cb:!(share)',
-		'^(.*)$',
+		'^Salam$',
 
     }
 }
