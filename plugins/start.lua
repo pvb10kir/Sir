@@ -174,7 +174,7 @@ S = ثانیه
 end
 		if query == 'login' then
             local text = [[*Send Me Your Password For Login.*]]
-            local keyboard = do_keyboard_cmds2()
+            local keyboard = do_keyboard_login()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
 		if query == 'shop' then
@@ -218,7 +218,7 @@ end
             local text = [[`Please Send Me Your Private Password
 			I Set It For Your Account.
 			You Can put Your Pass IN The` *Login* `In Home Menu`.]]
-            local keyboard = do_keyboard_commands()
+            local keyboard = do_keyboard_register()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
 if query == 'home' then
