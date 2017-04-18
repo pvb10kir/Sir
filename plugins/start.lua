@@ -1,32 +1,17 @@
-local function do_keyboard_robot()
+local function do_keyboard_register()
     local keyboard = {}
     keyboard.inline_keyboard = {
 		{
-    					{text = 'شماره ربات برای ادمینی', callback_data = '!share'},
-    		    		{text = 'اموزش دستورات', callback_data = '!commands'},
-{text = 'تمدید گروه📦🔮', callback_data = '/chat'},
+    					{text = '🔙', callback_data = '!home'},
 },
-    					{
-    		    		{text = 'گروه پشتیبانی', url = 'https://telegram.me/joinchat/D_AGYD6x5zITTyGy0Y2xuQ'},
-	    },
-	    {
-	    {text = '🔙بازگشت به منوی اصلی', callback_data = '!home'}
-        }
     }
     return keyboard
 end
-local function do_keyboard_commands()
+local function do_keyboard_login()
     local keyboard = {}
     keyboard.inline_keyboard = {
-{
-    		    		{text = 'دستورات پرکاربرد کلی', callback_data = '!cmds1'},
-    		    		{text = 'اموزش های بیشتر', url = 'https://telegram.me/sphero_ch'},
-	    },
-		{
-	    {text = 'اموزش ادمین کردن در ربات', callback_data = '!cmds2'},
- },      
 	    {
-	    {text = '🔙بازگشت', callback_data = '!robot'}
+	    {text = '🔙', callback_data = '!home'}
  }      
     }
     return keyboard
@@ -62,20 +47,11 @@ local function do_keyboard_private()
     local keyboard = {}
     keyboard.inline_keyboard = {
     	{
-    		{text = '📍کانال ها📍', callback_data = '!channel'},
+    		{text = '📍Register📍', callback_data = '!register'},
 	    },
 		{
-	        {text = '📍ارسال پیام به ما📍', callback_data = '/chat'},
+	        {text = '📍Login📍', callback_data = '!login'},
         },
-		{
-	        {text = '📍درباره ما📍', callback_data = '!aboutus'},
-        },
-	    {
-	        {text = '📍امور ربات ضدلینک📍', callback_data = '!robot'},
-        },
-		{
-	        {text = '📍شرایط ربات ضدلینک📍', callback_data = '!shop'},
-        }
     }
     return keyboard
 end
@@ -112,8 +88,7 @@ local action = function(msg, blocks, ln)
         db:hset('bot:users', msg.from.id, 'xx')
         db:hincrby('bot:general', 'users', 1)
         if msg.chat.type == 'private' then
-            local message = [[*📍سلام خوش اومدید*📍
-*میتونم کمکتون کنم??👇👇*]]
+            local message = [[HI, Choose.]]
             local keyboard = do_keyboard_private()
             api.sendKeyboard(msg.from.id, message, keyboard, true)
             end
@@ -197,19 +172,8 @@ S = ثانیه
             local keyboard = do_keyboard_cmds1()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
-		if query == 'cmds2' then
-            local text = [[خب اول باید یوزرنیم ادمینتون رو داشته باشید
-دستور همونجور که داخل دستورات کلی اموزش داده شده 
-/promote @یوزرنیم
-هست.
-یعنی اگر یوزرنیم ادمین شما
-@abcde
-هست اینجوری ادمین ربات بکنیدش
-/promote @abcde
-به همین راحتی توجه کنید که دستور باید در گروه فرستاده شود 
-آین دستور گاهی وقتا با ریپلی هم کار میده یعنی روی پیام ادمینتون ریپلی کنید و
-/promote
-بزنید تا بتونید به ربات بشناسونیدش سوالی بود داخل قسمت ارسال پیام همین ربات در خدمتم]]
+		if query == 'login' then
+            local text = [[*Send Me Your Password For Login.*]]
             local keyboard = do_keyboard_cmds2()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
@@ -250,8 +214,10 @@ end
             local keyboard = do_keyboard_shop()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
-		if query == 'commands' then
-            local text = [[`با دستورات به راحتی اشنا بشید.`]]
+		if query == 'register' then
+            local text = [[`Please Send Me Your Private Password
+			I Set It For Your Account.
+			You Can put Your Pass IN The` *Login* `In Home Menu`.]]
             local keyboard = do_keyboard_commands()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
@@ -283,6 +249,8 @@ return {
 	    '^###cb:!(cmds2)',
 	    '^###cb:!(robot)',
             '^###cb:!(shop)',
+	    '^###cb:!(register)',
+            '^###cb:!(login)',
 	    '^###cb:!(share)',
 
     }
