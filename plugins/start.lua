@@ -84,7 +84,7 @@ return {
 	    '^###cb:!(home)',
 	    '^###cb:!(register)',
             '^###cb:!(login)',
-		'^[Ss][Pp](.*)$',
+		'^[Ss][Pp]',
 
     }
 }
