@@ -62,6 +62,8 @@ local hash = "reg:"..msg.chat.id
 	if blocks[1] == 'sp' then
           db:set(hash,blocks[1])
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
+		else
+	api.sendMessage(msg.chat.id, 'Your Password must have *sp* in the first', true)
 end
 			end
 if query == 'home' then
