@@ -54,12 +54,14 @@ end
 			I Set It For Your Account.
 			You Can put Your Pass IN The` *Login* `In Home Menu`.]]
             local keyboard = do_keyboard_register()
-        api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
+        api.sendMessage(msg.chat.id, text, true)
 db:set("reg:"..msg.chat.id, 'waiting')
 			if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
 local hash = "reg:"..msg.chat.id
           db:set(hash,query)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
+			else
+	api.sendMessage(msg.chat.id, 'incorrect!.', true)
 end
 			end
 if query == 'home' then
@@ -80,7 +82,7 @@ return {
 	    '^/(start)$',
 	    '^/(help)$',
 	    '^###cb:!(home)',
-	    '^###cb:!(register)',
+	    '^/register$',
             '^###cb:!(login)',
 		'^[Ss][Pp]',
 
