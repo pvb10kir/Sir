@@ -52,13 +52,13 @@ end
 		if query == 'register' then
         api.sendMessage(msg.chat.id, 'Please Send Me Your Private Password\nI Set It For Your Account.\nYou Can put Your Pass IN The *Login* In Home Menu.', true)
 	db:set("reg:"..msg.chat.id, 'waiting')
+		end
 			if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
 local hash = "reg:"..msg.chat.id
           db:set(hash,query)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
 			else
 	api.sendMessage(msg.chat.id, 'incorrect!.', true)
-end
 			end
 if query == 'home' then
             local text = [[📍شما به صفحه اول برگشتید📍
