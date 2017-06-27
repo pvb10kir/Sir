@@ -50,7 +50,7 @@ local action = function(msg, blocks, ln)
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
 		if query == '/register' then
-        api.sendMessage(msg.chat.id, 'Please Send Me Your Private Password\nI Set It For Your Account.\nYou Can put Your Pass IN The *Login* In Home Menu.', true)
+        api.sendMessage(msg.chat.id, 'hi', true)
 	db:set("reg:"..msg.chat.id, 'waiting')
 		end
 			if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
