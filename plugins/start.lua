@@ -60,8 +60,6 @@ db:set("reg:"..msg.chat.id, 'waiting')
 local hash = "reg:"..msg.chat.id
           db:set(hash,query)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
-			else
-	api.sendMessage(msg.chat.id, 'incorrect!.', true)
 end
 			end
 if query == 'home' then
