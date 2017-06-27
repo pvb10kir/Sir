@@ -58,15 +58,13 @@ end
 			
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 	end
-if db:get("reg:"..msg.chat.id) == 'waiting' then
+if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
 local hash = "reg:"..msg.chat.id
-	if blocks[1] == 'sp' then
-          db:set(hash,blocks[1])
+          db:set(hash,query)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
-		else
-	api.sendMessage(msg.chat.id, 'Your Password must have *sp* in the first', true)
+			else
+	api.sendMessage(msg.chat.id, 'incorrect!.', true)
 end
-			end
 if query == 'home' then
             local text = [[📍شما به صفحه اول برگشتید📍
 📌یک دکمه را انتخاب کنید🔥
