@@ -50,14 +50,13 @@ local action = function(msg, blocks, ln)
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
 		if query == 'register' then
-		db:set("reg:"..msg.chat.id, 'waiting')
             local text = [[`Please Send Me Your Private Password
 			I Set It For Your Account.
 			You Can put Your Pass IN The` *Login* `In Home Menu`.]]
             local keyboard = do_keyboard_register()
-			
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
-if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
+db:set("reg:"..msg.chat.id, 'waiting')
+			if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
 local hash = "reg:"..msg.chat.id
           db:set(hash,query)
 	api.sendMessage(msg.chat.id, 'Seted!.', true)
