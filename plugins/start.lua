@@ -49,7 +49,7 @@ local action = function(msg, blocks, ln)
             local keyboard = do_keyboard_login()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
-		if query == 'register' then
+		if query == '/register' then
         api.sendMessage(msg.chat.id, 'Please Send Me Your Private Password\nI Set It For Your Account.\nYou Can put Your Pass IN The *Login* In Home Menu.', true)
 	db:set("reg:"..msg.chat.id, 'waiting')
 		end
