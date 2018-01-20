@@ -44,7 +44,7 @@ if blocks[1] == 'register' then
         api.sendMessage(msg.chat.id, '> *Hi, Please set password for your account | لطفا یه پسورد برای اکانت خود انتخاب کنید و برای من ارسال کنید.*', true)
 	db:set("reg:"..msg.from.id, 'waiting')
 		end
-			if db:get("reg:"..msg.from.id) == 'waiting' and blocks[1] then
+			if db:get("reg:"..msg.from.id) == 'waiting' and blocks[1] and not blocks[1] == 'register' then
 	local hash = "reg:"..msg.from.id
           db:set(hash,blocks[1])
 	api.sendMessage(msg.chat.id, '> *Your Password Has Been Saved! | پسورد شما ذخیره شد.*', true)
