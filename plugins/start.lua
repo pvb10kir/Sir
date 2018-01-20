@@ -74,6 +74,7 @@ return {
 	triggers = {
 	    '^/(start)@Sphero_Bot$',
 	    '^/(start)$',
+	'^/(register)$',
 	    '^/(help)$',
 	    '^###cb:!(home)',
 	    '^###cb:!(register)',
