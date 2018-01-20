@@ -49,16 +49,14 @@ local action = function(msg, blocks, ln)
             local keyboard = do_keyboard_login()
         api.editMessageText(msg.chat.id, msg_id, text, keyboard, true)
 end
-		if query == '/register' then
-        api.sendMessage(msg.chat.id, 'hi', true)
-	db:set("reg:"..msg.chat.id, 'waiting')
+		if query == 'register' then
+        api.sendMessage(msg.chat.id, '> *Hi, Please set password for your account | لطفا یه پسورد برای اکانت خود انتخاب کنید و برای من ارسال کنید.*', true)
+	db:set("reg:"..msg.from.id, 'waiting')
 		end
-			if db:get("reg:"..msg.chat.id) == 'waiting' and query == 'sp' then
-local hash = "reg:"..msg.chat.id
-          db:set(hash,query)
-	api.sendMessage(msg.chat.id, 'Seted!.', true)
-			else
-	api.sendMessage(msg.chat.id, 'incorrect!.', true)
+			if db:get("reg:"..msg.from.id) == 'waiting' and blocks[1] then
+	local hash = "reg:"..msg.from.id
+          db:set(hash,blocks[1])
+	api.sendMessage(msg.chat.id, '> *Your Password Has Been Saved! | پسورد شما ذخیره شد.*', true)
 			end
 if query == 'home' then
             local text = [[📍شما به صفحه اول برگشتید📍
@@ -78,9 +76,8 @@ return {
 	    '^/(start)$',
 	    '^/(help)$',
 	    '^###cb:!(home)',
-	    '^/register$',
+	    '^###cb:!(register)',
             '^###cb:!(login)',
-		'^[Ss][Pp]',
 
     }
 }
