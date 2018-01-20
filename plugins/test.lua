@@ -1,13 +1,13 @@
 local action = function(msg, blocks, ln)
-if blocks[1] == 'ver' then
-local text_start = "*ver 1.2*"
-api.sendMessage(msg.chat.id,text_start, true)
-end
+if db:get("reg:"..msg.from.id) == 'waiting' and blocks[1] then
+	local hash = "reg:"..msg.from.id
+          db:set(hash,blocks[1])
+	api.sendMessage(msg.chat.id, '> *Your Password Has Been Saved! | پسورد شما ذخیره شد.*', true)
+			end
    end
-
 return {
 	action = action,
 	triggers = {
-	    '^/(ver)$',
+	    '^/(register)$',
     }
 }
