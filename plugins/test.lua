@@ -1,4 +1,4 @@
-local action = function(msg, blocks, ln)
+local function run(msg, blocks, ln)
 if db:get("reg:"..msg.from.id) == 'waiting' and blocks[1] then
 	local hash = "reg:"..msg.from.id
           db:set(hash,blocks[1])
@@ -6,7 +6,7 @@ if db:get("reg:"..msg.from.id) == 'waiting' and blocks[1] then
 			end
    end
 return {
-	action = action,
+	action = run,
 	triggers = {
 	    '^/(register)$',
     }
